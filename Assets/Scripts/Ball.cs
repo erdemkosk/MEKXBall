@@ -14,12 +14,12 @@ public class Ball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(GetComponent<Rigidbody2D>().velocity.magnitude>0 && isServer==true){
-socket.Emit("moveBall", new JSONObject(Network.VectorToJson(GetComponent<Rigidbody2D>().position)));
+		socket.Emit("moveBall", new JSONObject(Network.VectorToJson(GetComponent<Rigidbody2D>().position)));
 		}
 	}
 	public void NavigateTo(Vector3 position)
 	{
-		GetComponent<Rigidbody2D>().MovePosition(position);
-		// transform.position = Vector3.Lerp(transform.position, position, 1f);
+		//GetComponent<Rigidbody2D>().MovePosition(position);
+		 transform.position = Vector3.Lerp(transform.position, position, 1f);
 	}
 }

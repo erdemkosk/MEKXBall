@@ -56,7 +56,7 @@ public class Network : MonoBehaviour {
         Vector3 position = new Vector3(GetFloatFromJson(e.data, "x"), GetFloatFromJson(e.data, "y"),0);
 
         var player = players[e.data["id"].ToString()];
-		//Debug.Log(player.transform.name);
+		Debug.Log(player.transform.name);
 
         Player navigatePos = player.GetComponent<Player>();
 
@@ -80,7 +80,7 @@ public class Network : MonoBehaviour {
     {
         //Sonradan katıldıgında degil hostsan oluyor
         ball.GetComponent<Ball>().isServer=true;
-        myPlayer.GetComponent<Player>().SetBlueTeam();
+      
         Debug.Log("Server is requesting position");
 
         socket.Emit("updatePosition", new JSONObject(VectorToJson(myPlayer.transform.position)));
